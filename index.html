@@ -58,229 +58,332 @@
       text-decoration-thickness: 4px;
       text-underline-offset: 6px;
     }
+    .city-option {
+      transition: all 0.15s ease;
+    }
+    .city-option:hover {
+      background: rgba(216, 180, 254, 0.12);
+    }
+    .city-option:focus {
+      outline: none;
+      background: rgba(216, 180, 254, 0.18);
+    }
   </style>
 </head>
-<body class="min-h-full font-mono text-raw-sand antialiased flex items-center justify-center p-3 sm:p-6 md:p-10 selection:bg-cyber-coral selection:text-ink-black" style="background-color: rgb(255, 255, 255);">
+<body class="min-h-full font-mono text-raw-sand antialiased flex items-center justify-center p-3 sm:p-6 md:p-10 selection:bg-cyber-coral selection:text-ink-black" style="background-color: rgb(255, 250, 241); background-image: linear-gradient(180deg, rgba(13,9,20,0.98), rgba(33,22,48,0.96));">
 <!-- Main Neo-Brutalist / Anti-Design Weather Canvas -->
-<main class="w-full max-w-[940px] halftone-border shadow-brutal-lg relative overflow-hidden text-raw-sand flex flex-col p-5 sm:p-8 md:p-12 gap-8 md:gap-10" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCBj-a9AbCTJDg6iIkYnRM1rbOVuMsYjJ4U83cpIROoMdg6pyr_Dk2584ozPg2KiP58tjsH_N-QPXQJc6AJRstOWD8vWVcGuNANYozjACTeEY-apYczByv_ttHW8bhhnze3ci0yA5m9kl-RiFFVwGKfrDLFe_TT28Au-IclvgKyVQpU-hSBweohbYh-xORdnRv5vywVXP5Ro_UCLE9t10spoVgD6NWF2LA-z_fZxP2Msz1DaojgZYlr'); background-size: cover; background-position: center center;">
-<!-- Anti-Design Header Grid Tape / Raw System Metadata -->
-<div class="flex flex-wrap items-center justify-between border-b-2 border-dashed border-raw-sand/30 pb-4 gap-3">
-<div class="flex items-center gap-2">
-<span class="inline-block w-3.5 h-3.5 bg-cyber-coral border-2 border-ink-black animate-pulse"></span>
-<span class="font-mono text-xs uppercase tracking-widest text-neon-lavender font-bold">ATMOS//SYNTH_V2.0</span>
-</div>
-<div class="bg-midnight-sub text-neon-lavender text-[11px] font-mono px-2 py-0.5 border border-ink-black shadow-brutal-sm rotate-1">
-      FEED: LIVE_OBSERVATION
-    </div>
-</div>
-<!-- SECTION 1: Brutalist Search Input -->
-<div class="relative w-full">
-<form class="flex flex-col sm:flex-row items-stretch gap-2 sm:gap-0" onsubmit="event.preventDefault(); updateCity();">
-<div class="relative flex-grow flex items-center bg-obsidian border-3 border-ink-black halftone-border shadow-brutal-sm">
-<label class="px-4 py-2 bg-midnight-sub text-neon-lavender font-mono text-xs uppercase font-bold tracking-wider border-r-2 border-ink-black select-none" for="cityInput">
-          LOC //
-        </label>
-<input class="w-full bg-transparent border-none py-3 px-4 font-mono font-bold text-lg sm:text-2xl text-raw-sand focus:ring-0 focus:outline-none placeholder:text-raw-sand/30 uppercase tracking-wider" id="cityInput" placeholder="ENTER TARGET CITY..." type="text" value="Berlin"/>
-</div>
-<button class="bg-cyber-coral hover:bg-cyber-pink active:translate-x-1 active:translate-y-1 text-ink-black px-6 py-3 font-display font-black text-sm uppercase tracking-wider border-3 border-ink-black halftone-border shadow-brutal-sm transition-all flex items-center justify-center gap-2" onclick="updateCity()" type="button">
-<span>SEARCH</span>
-<svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="square" stroke-linejoin="miter"></path>
-</svg>
-</button>
-</form>
-</div>
-<!-- SECTION 2: Current Weather Information (High-Contrast Anti-Design Layout) -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-<!-- Hero City & Primary Temperature Block (Asymmetric Electric Lavender Panel) -->
-<div class="lg:col-span-8 text-ink-black p-6 sm:p-8 border-3 border-ink-black halftone-border shadow-brutal relative overflow-hidden flex flex-col justify-between min-h-[220px] bg-neon-lavender">
-<!-- Stamped Decorative Tag -->
-<div class="absolute -right-12 -top-6 bg-cyber-coral text-ink-black border-2 border-ink-black px-12 py-1 rotate-12 text-[10px] font-mono font-black tracking-widest uppercase">
-        CURRENT_STATE
+<main class="w-full max-w-[940px] halftone-border shadow-brutal-lg relative overflow-hidden text-raw-sand flex flex-col p-5 sm:p-8 md:p-12 gap-8 md:gap-10" style="background-image: url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
+  <div class="absolute inset-0 bg-[rgba(13,9,20,0.68)]"></div>
+  <div class="relative z-10 flex flex-col gap-8 md:gap-10">
+    <!-- Anti-Design Header Grid Tape / Raw System Metadata -->
+    <div class="flex flex-wrap items-center justify-between border-b-2 border-dashed border-raw-sand/30 pb-4 gap-3">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-3.5 h-3.5 bg-cyber-coral border-2 border-ink-black animate-pulse"></span>
+        <span class="font-mono text-xs uppercase tracking-widest text-neon-lavender font-bold">ATMOS//SYNTH_V2.0</span>
       </div>
-<!-- City Name (Bold Stark Typography) -->
-<div>
-<p class="font-mono text-xs font-bold uppercase tracking-widest text-midnight-sub/80 mb-1">STATION REPORT // REGION</p>
-<h1 class="font-display font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tighter leading-none text-ink-black break-words" id="cityTitle">Berlin</h1>
-</div>
-<!-- Temperature + Graphic Anti-Design Glyph -->
-<div class="flex flex-wrap items-baseline justify-between gap-4 mt-6 pt-4 border-t-2 border-ink-black">
-<div class="flex items-baseline">
-<span class="font-display font-black text-6xl sm:text-7xl md:text-8xl tracking-tight text-ink-black leading-none" id="currentTemp">
-            14°C
-          </span>
-</div>
-<!-- Anti-Design Stylized Weather Glyph: Raw Geometric Rain/Sun Hybrid -->
-<div class="bg-obsidian text-cyber-coral p-3.5 border-2 border-ink-black shadow-brutal-sm -rotate-2">
-<svg class="w-14 h-14 sm:w-16 sm:h-16" fill="none" stroke="currentColor" viewbox="0 0 64 64">
-<!-- Brutalist segmented sun -->
-<rect fill="currentColor" height="16" stroke="#07020d" stroke-width="2" width="16" x="36" y="8"></rect>
-<line stroke="currentColor" stroke-width="3" x1="44" x2="44" y1="2" y2="6"></line>
-<line stroke="currentColor" stroke-width="3" x1="56" x2="59" y1="6" y2="3"></line>
-<line stroke="currentColor" stroke-width="3" x1="56" x2="62" y1="16" y2="16"></line>
-<!-- Heavy slab cloud outline -->
-<path d="M10 42 H46 V32 H38 V26 H24 V32 H14 V36 H10 Z" fill="#181024" stroke="#c084fc" stroke-width="3"></path>
-<!-- Anti-design brutalist angled rain slashes -->
-<line stroke="#ff5376" stroke-width="3.5" x1="16" x2="11" y1="48" y2="58"></line>
-<line stroke="#ff5376" stroke-width="3.5" x1="28" x2="23" y1="48" y2="58"></line>
-<line stroke="#ff5376" stroke-width="3.5" x1="40" x2="35" y1="48" y2="58"></line>
-</svg>
-</div>
-</div>
-</div>
-<!-- Secondary Metrics Stack: Feels like & UV Index ONLY -->
-<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-4">
-<!-- Feels Like Box -->
-<div class="flex-1 bg-obsidian p-5 border-3 border-ink-black halftone-border shadow-brutal flex flex-col justify-between relative">
-<div class="flex items-center justify-between">
-<span class="font-mono text-xs uppercase tracking-wider text-raw-sand/70 font-bold">PERCEIVED</span>
-<span class="w-2.5 h-2.5 bg-neon-lavender border border-ink-black"></span>
-</div>
-<div class="mt-3">
-<div class="font-mono text-xs uppercase text-neon-lavender">feels like:</div>
-<div class="font-display font-black text-3xl sm:text-4xl text-raw-sand mt-0.5" id="feelsLike">
-            12°C
+      <div class="bg-midnight-sub text-neon-lavender text-[11px] font-mono px-2 py-0.5 border border-ink-black shadow-brutal-sm rotate-1">
+        FEED: LIVE_OBSERVATION
+      </div>
+    </div>
+    <!-- SECTION 1: Brutalist Search Input -->
+    <div class="relative w-full">
+      <form class="flex flex-col sm:flex-row items-stretch gap-2 sm:gap-0" onsubmit="event.preventDefault(); updateCity();">
+        <div class="relative flex-grow flex items-center bg-obsidian border-3 border-ink-black halftone-border shadow-brutal-sm">
+          <label class="px-4 py-2 bg-midnight-sub text-neon-lavender font-mono text-xs uppercase font-bold tracking-wider border-r-2 border-ink-black select-none" for="cityInput">
+            LOC //
+          </label>
+          <input id="cityInput" class="w-full bg-transparent border-none py-3 px-4 font-mono font-bold text-lg sm:text-2xl text-raw-sand focus:ring-0 focus:outline-none placeholder:text-raw-sand/30 uppercase tracking-wide" placeholder="Search city..." value="Berlin" aria-label="City search"/>
+        </div>
+        <button type="submit" class="bg-cyber-coral hover:bg-cyber-pink active:translate-x-1 active:translate-y-1 text-ink-black px-6 py-3 font-display font-black text-sm uppercase tracking-wider border-3 border-ink-black shadow-brutal-sm">
+          <span>SEARCH</span>
+          <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+            <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="square" stroke-linejoin="miter"></path>
+          </svg>
+        </button>
+      </form>
+      <div id="citySuggestions" class="hidden absolute left-0 right-0 top-full z-20 mt-2 border-3 border-ink-black bg-obsidian shadow-brutal-sm max-h-72 overflow-y-auto"></div>
+    </div>
+    <!-- SECTION 2: Current Weather Information (High-Contrast Anti-Design Layout) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <!-- Hero City & Primary Temperature Block (Asymmetric Electric Lavender Panel) -->
+      <div class="lg:col-span-8 text-ink-black p-6 sm:p-8 border-3 border-ink-black halftone-border shadow-brutal relative overflow-hidden flex flex-col justify-between min-h-[220px] bg-neon-lavender">
+        <!-- Stamped Decorative Tag -->
+        <div class="absolute -right-12 -top-6 bg-cyber-coral text-ink-black border-2 border-ink-black px-12 py-1 rotate-12 text-[10px] font-mono font-black tracking-widest uppercase">
+          CURRENT_STATE
+        </div>
+        <!-- City Name (Bold Stark Typography) -->
+        <div>
+          <p class="font-mono text-xs font-bold uppercase tracking-widest text-midnight-sub/80 mb-1">STATION REPORT // REGION</p>
+          <h1 class="font-display font-black text-4xl sm:text-6xl md:text-7xl uppercase tracking-tighter leading-none text-ink-black break-words" id="cityTitle">Berlin</h1>
+        </div>
+        <!-- Temperature + Graphic Anti-Design Glyph -->
+        <div class="flex flex-wrap items-baseline justify-between gap-4 mt-6 pt-4 border-t-2 border-ink-black">
+          <div class="flex items-baseline">
+            <span class="font-display font-black text-6xl sm:text-7xl md:text-8xl tracking-tight text-ink-black leading-none" id="currentTemp">
+              14°C
+            </span>
           </div>
-</div>
-</div>
-<!-- UV Index Box -->
-<div class="flex-1 bg-cyber-coral text-ink-black p-5 border-3 border-ink-black halftone-border shadow-brutal flex flex-col justify-between relative">
-<div class="flex items-center justify-between">
-<span class="font-mono text-xs uppercase tracking-wider text-ink-black/80 font-bold">SOLAR_RAD</span>
-<span class="font-mono text-[10px] bg-ink-black text-cyber-coral px-1.5 py-0.5 font-bold uppercase">INDEX</span>
-</div>
-<div class="mt-3">
-<div class="font-mono text-xs uppercase font-bold text-ink-black/80">uv index:</div>
-<div class="font-display font-black text-3xl sm:text-4xl text-ink-black mt-0.5" id="uvIndex">
-            2
+          <!-- Anti-Design Stylized Weather Glyph: Raw Geometric Rain/Sun Hybrid -->
+          <div class="bg-obsidian text-cyber-coral p-3.5 border-2 border-ink-black shadow-brutal-sm -rotate-2">
+            <svg class="w-14 h-14 sm:w-16 sm:h-16" fill="none" stroke="currentColor" viewbox="0 0 64 64">
+              <!-- Brutalist segmented sun -->
+              <rect fill="currentColor" height="16" stroke="#07020d" stroke-width="2" width="16" x="36" y="8"></rect>
+              <line stroke="currentColor" stroke-width="3" x1="44" x2="44" y1="2" y2="6"></line>
+              <line stroke="currentColor" stroke-width="3" x1="56" x2="59" y1="6" y2="3"></line>
+              <line stroke="currentColor" stroke-width="3" x1="56" x2="62" y1="16" y2="16"></line>
+              <!-- Heavy slab cloud outline -->
+              <path d="M10 42 H46 V32 H38 V26 H24 V32 H14 V36 H10 Z" fill="#181024" stroke="#c084fc" stroke-width="3"></path>
+              <!-- Anti-design brutalist angled rain slashes -->
+              <line stroke="#ff5376" stroke-width="3.5" x1="16" x2="11" y1="48" y2="58"></line>
+              <line stroke="#ff5376" stroke-width="3.5" x1="28" x2="23" y1="48" y2="58"></line>
+              <line stroke="#ff5376" stroke-width="3.5" x1="40" x2="35" y1="48" y2="58"></line>
+            </svg>
           </div>
-</div>
-</div>
-</div>
-</div>
-<!-- SECTION 3: Following Week (7-day forecast ONLY: Day, Symbol, Temp) -->
-<div class="flex flex-col gap-3 pt-2">
-<!-- Section Label / Brutalist Tilted Banner -->
-<div class="flex items-center justify-between">
-<div class="inline-flex items-center gap-2 bg-raw-sand text-ink-black px-3 py-1 font-mono text-xs uppercase font-bold border-2 border-ink-black shadow-brutal-sm -rotate-1">
-<span>NEXT WEEK — 7_DAY_PROJECTION</span>
-</div>
-<span class="text-[11px] font-mono text-raw-sand/40 hidden sm:inline">[PERIOD // 07D_CYCLE]</span>
-</div>
-<!-- 7 Forecast Blocks -->
-<div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
-<!-- Mon -->
-<div class="bg-obsidian hover:bg-midnight-sub transition-colors p-3.5 border-2 border-ink-black halftone-border shadow-brutal-sm flex flex-col items-center justify-between text-center gap-2">
-<span class="font-mono text-xs font-bold uppercase tracking-wider text-neon-lavender border-b border-raw-sand/20 pb-1 w-full">MON</span>
-<!-- Rain Glyph -->
-<div class="w-10 h-10 flex items-center justify-center text-raw-sand my-1">
-<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 32 32">
-<path d="M6 18 H26 V12 H18 V8 H12 V12 H6 Z" fill="none" stroke="#ff5376"></path>
-<line stroke="#d8b4fe" stroke-width="2.5" x1="9" x2="6" y1="22" y2="28"></line>
-<line stroke="#d8b4fe" stroke-width="2.5" x1="16" x2="13" y1="22" y2="28"></line>
-<line stroke="#d8b4fe" stroke-width="2.5" x1="23" x2="20" y1="22" y2="28"></line>
-</svg>
-</div>
-<span class="font-display font-black text-xl text-raw-sand">13°</span>
-</div>
-<!-- Tue -->
-<div class="bg-obsidian hover:bg-midnight-sub transition-colors p-3.5 border-2 border-ink-black halftone-border shadow-brutal-sm flex flex-col items-center justify-between text-center gap-2">
-<span class="font-mono text-xs font-bold uppercase tracking-wider text-neon-lavender border-b border-raw-sand/20 pb-1 w-full">TUE</span>
-<!-- Overcast Heavy Cloud Glyph -->
-<div class="w-10 h-10 flex items-center justify-center text-raw-sand my-1">
-<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 32 32">
-<rect height="10" stroke="#d8b4fe" stroke-width="2" width="22" x="5" y="12"></rect>
-<rect height="4" stroke="currentColor" stroke-width="2" width="12" x="10" y="8"></rect>
-<line stroke="#ff5376" stroke-dasharray="2 2" stroke-width="2" x1="7" x2="25" y1="26" y2="26"></line>
-</svg>
-</div>
-<span class="font-display font-black text-xl text-raw-sand">15°</span>
-</div>
-<!-- Wed -->
-<div class="bg-obsidian hover:bg-midnight-sub transition-colors p-3.5 border-2 border-ink-black halftone-border shadow-brutal-sm flex flex-col items-center justify-between text-center gap-2">
-<span class="font-mono text-xs font-bold uppercase tracking-wider text-neon-lavender border-b border-raw-sand/20 pb-1 w-full">WED</span>
-<!-- Partly Sunny Geometric Glyph -->
-<div class="w-10 h-10 flex items-center justify-center text-raw-sand my-1">
-<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 32 32">
-<rect fill="#ff5376" height="8" stroke="#07020d" stroke-width="1.5" width="8" x="18" y="4"></rect>
-<path d="M5 24 H23 V17 H17 V13 H9 V17 H5 Z" stroke="currentColor" stroke-width="2"></path>
-</svg>
-</div>
-<span class="font-display font-black text-xl text-raw-sand">16°</span>
-</div>
-<!-- Thu -->
-<div class="bg-obsidian hover:bg-midnight-sub transition-colors p-3.5 border-2 border-ink-black halftone-border shadow-brutal-sm flex flex-col items-center justify-between text-center gap-2">
-<span class="font-mono text-xs font-bold uppercase tracking-wider text-neon-lavender border-b border-raw-sand/20 pb-1 w-full">THU</span>
-<!-- Heavy Showers Glyph -->
-<div class="w-10 h-10 flex items-center justify-center text-raw-sand my-1">
-<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 32 32">
-<path d="M6 16 H26 V10 H18 V6 H11 V10 H6 Z" stroke="#c084fc" stroke-width="2"></path>
-<line stroke="#ff5376" stroke-width="3" x1="10" x2="6" y1="20" y2="29"></line>
-<line stroke="#ff5376" stroke-width="3" x1="18" x2="14" y1="20" y2="29"></line>
-<line stroke="#ff5376" stroke-width="3" x1="26" x2="22" y1="20" y2="29"></line>
-</svg>
-</div>
-<span class="font-display font-black text-xl text-raw-sand">12°</span>
-</div>
-<!-- Fri -->
-<div class="bg-midnight-sub p-3.5 border-2 border-ink-black halftone-border shadow-brutal-sm flex flex-col items-center justify-between text-center gap-2 relative">
-<div class="absolute -top-2 bg-cyber-coral text-ink-black text-[9px] font-mono px-1 font-bold">PEAK</div>
-<span class="font-mono text-xs font-bold uppercase tracking-wider text-cyber-coral border-b border-raw-sand/20 pb-1 w-full">FRI</span>
-<!-- High Sun Ray Matrix Glyph -->
-<div class="w-10 h-10 flex items-center justify-center text-neon-lavender my-1">
-<svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 32 32">
-<rect fill="currentColor" height="10" stroke="#07020d" stroke-width="1.5" width="10" x="11" y="11"></rect>
-<line stroke="currentColor" stroke-width="2.5" x1="16" x2="16" y1="3" y2="8"></line>
-<line stroke="currentColor" stroke-width="2.5" x1="16" x2="16" y1="24" y2="29"></line>
-<line stroke="currentColor" stroke-width="2.5" x1="3" x2="8" y1="16" y2="16"></line>
-<line stroke="currentColor" stroke-width="2.5" x1="24" x2="29" y1="16" y2="16"></line>
-</svg>
-</div>
-<span class="font-display font-black text-xl text-cyber-coral">17°</span>
-</div>
-<!-- Sat -->
-<div class="bg-obsidian hover:bg-midnight-sub transition-colors p-3.5 border-2 border-ink-black halftone-border shadow-brutal-sm flex flex-col items-center justify-between text-center gap-2">
-<span class="font-mono text-xs font-bold uppercase tracking-wider text-neon-lavender border-b border-raw-sand/20 pb-1 w-full">SAT</span>
-<!-- Gust / Flow Glyph -->
-<div class="w-10 h-10 flex items-center justify-center text-raw-sand my-1">
-<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 32 32">
-<path d="M4 10 H22 A4 4 0 0 0 26 6"></path>
-<path d="M8 16 H26 A4 4 0 0 1 30 20"></path>
-<path d="M5 22 H18"></path>
-</svg>
-</div>
-<span class="font-display font-black text-xl text-raw-sand">14°</span>
-</div>
-<!-- Sun -->
-<div class="bg-obsidian hover:bg-midnight-sub transition-colors p-3.5 border-2 border-ink-black halftone-border shadow-brutal-sm flex flex-col items-center justify-between text-center gap-2 col-span-2 sm:col-span-1">
-<span class="font-mono text-xs font-bold uppercase tracking-wider text-neon-lavender border-b border-raw-sand/20 pb-1 w-full">SUN</span>
-<!-- Sun + Subtle Cloud Stamped Glyph -->
-<div class="w-10 h-10 flex items-center justify-center text-raw-sand my-1">
-<svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 32 32">
-<circle cx="21" cy="11" fill="#c084fc" r="5" stroke="#07020d" stroke-width="1.5"></circle>
-<path d="M6 23 H24 V17 H18 V14 H10 V17 H6 Z" stroke="#ff5376" stroke-width="2"></path>
-</svg>
-</div>
-<span class="font-display font-black text-xl text-raw-sand">15°</span>
-</div>
-</div>
-</div>
+        </div>
+      </div>
+      <!-- Secondary Metrics Stack: Feels like & UV Index ONLY -->
+      <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-4">
+        <!-- Feels Like Box -->
+        <div class="flex-1 bg-obsidian p-5 border-3 border-ink-black halftone-border shadow-brutal flex flex-col justify-between relative">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs uppercase tracking-wider text-raw-sand/70 font-bold">PERCEIVED</span>
+            <span class="w-2.5 h-2.5 bg-neon-lavender border border-ink-black"></span>
+          </div>
+          <div class="mt-3">
+            <div class="font-mono text-xs uppercase text-neon-lavender">feels like:</div>
+            <div class="font-display font-black text-3xl sm:text-4xl text-raw-sand mt-0.5" id="feelsLike">
+              12°C
+            </div>
+          </div>
+        </div>
+        <!-- UV Index Box -->
+        <div class="flex-1 bg-cyber-coral text-ink-black p-5 border-3 border-ink-black halftone-border shadow-brutal flex flex-col justify-between relative">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs uppercase tracking-wider text-ink-black/80 font-bold">SOLAR_RAD</span>
+            <span class="font-mono text-[10px] bg-ink-black text-cyber-coral px-1.5 py-0.5 font-bold uppercase">INDEX</span>
+          </div>
+          <div class="mt-3">
+            <div class="font-mono text-xs uppercase font-bold text-ink-black/80">uv index:</div>
+            <div class="font-display font-black text-3xl sm:text-4xl text-ink-black mt-0.5" id="uvIndex">
+              2
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SECTION 3: Following Week (7-day forecast ONLY: Day, Symbol, Temp) -->
+    <div class="flex flex-col gap-3 pt-2">
+      <!-- Section Label / Brutalist Tilted Banner -->
+      <div class="flex items-center justify-between">
+        <div class="inline-flex items-center gap-2 bg-raw-sand text-ink-black px-3 py-1 font-mono text-xs uppercase font-bold border-2 border-ink-black shadow-brutal-sm -rotate-1">
+          <span>NEXT WEEK — 7_DAY_PROJECTION</span>
+        </div>
+        <span class="text-[11px] font-mono text-raw-sand/40 hidden sm:inline">[PERIOD // 07D_CYCLE]</span>
+      </div>
+      <div id="forecastGrid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3"></div>
+    </div>
+  </div>
 </main>
 <script>
-  function updateCity() {
-    const input = document.getElementById('cityInput');
-    const title = document.getElementById('cityTitle');
-    const val = input.value.trim();
-    if (val) {
-      title.textContent = val;
+  const weatherCodeMap = {
+    0: { label: 'Clear sky', icon: '☀️' },
+    1: { label: 'Mainly clear', icon: '🌤️' },
+    2: { label: 'Partly cloudy', icon: '⛅' },
+    3: { label: 'Overcast', icon: '☁️' },
+    45: { label: 'Fog', icon: '🌫️' },
+    48: { label: 'Depositing rime fog', icon: '🌫️' },
+    51: { label: 'Light drizzle', icon: '🌦️' },
+    53: { label: 'Moderate drizzle', icon: '🌦️' },
+    55: { label: 'Dense drizzle', icon: '🌧️' },
+    56: { label: 'Freezing drizzle', icon: '🌧️' },
+    57: { label: 'Heavy freezing drizzle', icon: '🌧️' },
+    61: { label: 'Slight rain', icon: '🌦️' },
+    63: { label: 'Moderate rain', icon: '🌧️' },
+    65: { label: 'Heavy rain', icon: '🌧️' },
+    66: { label: 'Freezing rain', icon: '🌧️' },
+    67: { label: 'Heavy freezing rain', icon: '🌧️' },
+    71: { label: 'Slight snow', icon: '🌨️' },
+    73: { label: 'Moderate snow', icon: '❄️' },
+    75: { label: 'Heavy snow', icon: '❄️' },
+    77: { label: 'Snow grains', icon: '❄️' },
+    80: { label: 'Rain showers', icon: '🌦️' },
+    81: { label: 'Heavy rain showers', icon: '🌧️' },
+    82: { label: 'Violent rain showers', icon: '⛈️' },
+    85: { label: 'Snow showers', icon: '🌨️' },
+    86: { label: 'Heavy snow showers', icon: '❄️' },
+    95: { label: 'Thunderstorm', icon: '⛈️' },
+    96: { label: 'Thunderstorm with hail', icon: '⛈️' },
+    99: { label: 'Severe thunderstorm', icon: '⛈️' }
+  };
+
+  const cityInput = document.getElementById('cityInput');
+  const citySuggestions = document.getElementById('citySuggestions');
+
+  function setWeatherIcon(code) {
+    const info = weatherCodeMap[code] || weatherCodeMap[0];
+    return info.icon;
+  }
+
+  function renderForecast(daily) {
+    const grid = document.getElementById('forecastGrid');
+    if (!daily || !daily.time) {
+      return;
+    }
+
+    grid.innerHTML = daily.time.slice(0, 7).map((dateString, index) => {
+      const date = new Date(dateString);
+      const code = daily.weather_code[index];
+      const high = Math.round(daily.temperature_2m_max[index]);
+      const low = Math.round(daily.temperature_2m_min[index]);
+      const weekday = date.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
+      const icon = setWeatherIcon(code);
+
+      return `
+        <div class="bg-obsidian hover:bg-midnight-sub transition-colors p-3.5 border-2 border-ink-black halftone-border shadow-brutal-sm flex flex-col items-center justify-between text-center gap-2">
+          <span class="font-mono text-xs font-bold uppercase tracking-wider text-neon-lavender border-b border-raw-sand/20 pb-1 w-full">${weekday}</span>
+          <div class="w-10 h-10 flex items-center justify-center text-raw-sand my-1 text-2xl">${icon}</div>
+          <span class="font-display font-black text-xl text-raw-sand">${high}°</span>
+          <span class="font-mono text-[10px] uppercase text-raw-sand/60">${low}°</span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function hideSuggestions() {
+    citySuggestions.classList.add('hidden');
+    citySuggestions.innerHTML = '';
+  }
+
+  function renderSuggestions(results) {
+    if (!results || !results.length) {
+      citySuggestions.innerHTML = '<div class="p-3 font-mono text-xs uppercase tracking-wide text-raw-sand/80">No cities found.</div>';
+      citySuggestions.classList.remove('hidden');
+      return;
+    }
+
+    citySuggestions.innerHTML = results.map((result) => {
+      const place = [result.name, result.admin1, result.country].filter(Boolean).join(', ');
+      return `
+        <button
+          type="button"
+          class="city-option w-full text-left px-4 py-3 border-b border-raw-sand/10 hover:bg-midnight-sub focus:bg-midnight-sub"
+          data-lat="${result.latitude}"
+          data-lon="${result.longitude}"
+          data-name="${result.name}"
+          data-admin1="${result.admin1 || ''}"
+          data-country="${result.country || ''}"
+        >
+          <div class="font-mono text-xs uppercase tracking-wider text-neon-lavender">${result.name}</div>
+          <div class="font-mono text-[11px] text-raw-sand/75">${place}</div>
+        </button>
+      `;
+    }).join('');
+
+    citySuggestions.querySelectorAll('.city-option').forEach((button) => {
+      button.addEventListener('click', () => {
+        const lat = Number(button.dataset.lat);
+        const lon = Number(button.dataset.lon);
+        const name = button.dataset.name;
+        const admin1 = button.dataset.admin1 || '';
+        const country = button.dataset.country || '';
+
+        cityInput.value = [name, admin1, country].filter(Boolean).join(', ');
+        hideSuggestions();
+        fetchWeather(lat, lon, name, admin1, country);
+      });
+    });
+
+    citySuggestions.classList.remove('hidden');
+  }
+
+  async function searchCities() {
+    const query = cityInput.value.trim();
+    if (!query) {
+      hideSuggestions();
+      return;
+    }
+
+    try {
+      const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=5&language=en&format=json`);
+      const data = await response.json();
+      renderSuggestions(data.results || []);
+    } catch (error) {
+      citySuggestions.innerHTML = '<div class="p-3 font-mono text-xs uppercase tracking-wide text-cyber-coral">Unable to load cities.</div>';
+      citySuggestions.classList.remove('hidden');
     }
   }
 
-  const cityInput = document.getElementById('cityInput');
-  cityInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      updateCity();
+  async function fetchWeather(lat, lon, cityName, admin1, country) {
+    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,uv_index&hourly=temperature_2m,weather_code,relative_humidity_2m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=7`;
+
+    try {
+      const response = await fetch(weatherUrl);
+      const data = await response.json();
+
+      const current = data.current || {};
+      const cityLabel = [cityName, admin1, country].filter(Boolean).join(', ');
+
+      if (cityLabel) {
+        document.getElementById('cityTitle').textContent = cityLabel;
+      }
+
+      const temperature = Number(current.temperature_2m ?? 0);
+      const feelsLike = Number(current.apparent_temperature ?? current.temperature_2m ?? 0);
+      const uvIndex = Number(current.uv_index ?? 0);
+
+      document.getElementById('currentTemp').textContent = `${Math.round(temperature)}°C`;
+      document.getElementById('feelsLike').textContent = `${Math.round(feelsLike)}°C`;
+      document.getElementById('uvIndex').textContent = `${Math.round(uvIndex)}`;
+
+      if (data.daily) {
+        renderForecast(data.daily);
+      }
+    } catch (error) {
+      console.error('Weather fetch failed:', error);
+    }
+  }
+
+  function updateCity() {
+    const query = cityInput.value.trim();
+    if (!query) {
+      return;
+    }
+
+    searchCities();
+  }
+
+  cityInput.addEventListener('input', () => {
+    const query = cityInput.value.trim();
+    if (!query) {
+      hideSuggestions();
+      return;
+    }
+    searchCities();
+  });
+
+  cityInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const query = cityInput.value.trim();
+      if (!query) {
+        return;
+      }
+
+      const firstCity = citySuggestions.querySelector('.city-option');
+      if (firstCity) {
+        firstCity.click();
+      } else {
+        searchCities();
+      }
     }
   });
+
+  document.addEventListener('click', (event) => {
+    if (!citySuggestions.contains(event.target) && event.target !== cityInput) {
+      hideSuggestions();
+    }
+  });
+
+  fetchWeather(52.52, 13.41, 'Berlin', 'Berlin', 'Germany');
 </script>
 </body></html>
